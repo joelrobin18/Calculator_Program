@@ -322,7 +322,7 @@ void trignometry()
     while(cont1)
     {
         cout<<"Enter a value for performing the calculation";
-        cout<<endl<<"1.Trigonometric function" <<endl<<"2.Inverse Trigonometric"<<endl;
+        cout<<endl<<"1.Trigonometric function" <<endl<<"2.Inverse Trigonometric"<<endl;//<<"3.Hyperbolic Function"<<endl;//
         cin>>a;
         if(a==1)
         {
@@ -499,7 +499,7 @@ void Tan(double pi)
 }
 void Cot(double pi)
 {
-     int num;
+    int num;
     double b=raddegcheck(num);
     if(num==1||num==2){
     double c=cos(b)/sin(b);
@@ -508,7 +508,7 @@ void Cot(double pi)
 }
 void Sec(double pi)
 {
-     int num;
+    int num;
     double b=raddegcheck(num);
     if(num==1||num==2){
     double c=1/cos(b);
@@ -517,7 +517,7 @@ void Sec(double pi)
 }
 void Cosec(double pi)
 {
-     int num;
+    int num;
     double b=raddegcheck(num);
     if(num==1||num==2){
     double c=1/sin(b);
@@ -582,7 +582,7 @@ void inversetrig()
         }
 
         inversetrigcheck:
-        cout << "Enter (Y/N) for Inverse Trigonometric Operations" << endl << " Y for continue " << endl << " N for Exiting " << endl;
+        cout << "Enter (Y/N) for Inverse Trigonometric Operations" << endl << "Y for continue " << endl << "N for Exiting " << endl;
         cin >> yesorno;
 
         if (yesorno == 'y' || yesorno == 'Y') {
@@ -606,27 +606,51 @@ void inversetrig()
 
 void ArcSin()
 {
-    
+    double value;
+    cout<<endl<<"Enter the sin value"<<endl;
+    cin>>value;
+    double a=asin(value);
+    cout<<endl<<"Arc Sine Value(In Radian): "<<a<<endl;
 }
 void ArcCos()
 {
-
+    double value;
+    cout<<endl<<"Enter the Cos value"<<endl;
+    cin>>value;
+    double a=acos(value);
+    cout<<endl<<"Arc Cos Value(In Radian): "<<a<<endl;
 }
 void ArcTan()
 {
-
+    double value;
+    cout<<endl<<"Enter the Tan value"<<endl;
+    cin>>value;
+    double a=atan(value);
+    cout<<endl<<"Arc Tan Value(In Radian): "<<a<<endl;
 }
 void ArcCot()
 {
-
+    double value;
+    cout<<endl<<"Enter the Cot value"<<endl;
+    cin>>value;
+    double a=atan(1/value);
+    cout<<endl<<"Arc Cot Value(In Radian): "<<a<<endl;
 }
 void ArcSec()
 {
-
+    double value;
+    cout<<endl<<"Enter the sec value"<<endl;
+    cin>>value;
+    double a=acos(1/value);
+    cout<<endl<<"Arc Sec Value(In Radian): "<<a<<endl;
 }
 void ArcCosec()
 {
-
+    double value;
+    cout<<endl<<"Enter the Cosec value"<<endl;
+    cin>>value;
+    double a=asin(1/value);
+    cout<<endl<<"Arc Cosec Value(In Radian): "<<a<<endl;
 }
 
 
