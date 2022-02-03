@@ -2,6 +2,8 @@
 #include <cmath>
 #include <string>
 using namespace std;
+
+//Function Call for Each Calculation
 void switchcase(int sino);
 void arithmetic();
 void trignometry();
@@ -12,15 +14,23 @@ void addition();
 void subtraction();
 void multiplication();
 void division();
+double raddegcheck(int &);
 void inversetrig();
 void trig();
-void Sin();
-void Cos();
-void Tan();
-void Cot();
-void Sec();
-void Cosec();
+void Sin(double pi);
+void Cos(double pi);
+void Tan(double pi);
+void Cot(double pi);
+void Sec(double pi);
+void Cosec(double pi);
+void ArcSin();
+void ArcCos();
+void ArcTan();
+void ArcCot();
+void ArcSec();
+void ArcCosec();
 //void modu();
+
 int main() {
     cout << "Welcome to Calculator Program"<< endl ;
     cout<<"This is a program to perform various mathematical operations such as Arithmetic, Trignometric,"
@@ -175,7 +185,7 @@ void arithmetic()
                     cout<<endl;
                     break;
                 }*/
-                default:
+                default: 
                     break;
             }
         }
@@ -271,15 +281,15 @@ void division()
     cout<< endl;
     double n,ar[1024],div;
     int i;
-    cout<<"No of terms to divide"<<endl;
+    cout<<"No of terms to divide: "<<endl;
     cin>>n;
-    cout<<endl<<"Enter numbers";
+    cout<<endl<<"Enter numbers: "<<endl;
     for(i=0;i<n;i++)
     {
         cin>>ar[i];
     }
     div=ar[0];
-    for(i=1;i<=n;i++)
+    for(i=1;i<n;i++)
     {
         if (ar[i] != 0)
         {
@@ -287,7 +297,7 @@ void division()
         }
         else
         {
-            cout<<endl<<"Division by zero is underdefined";
+            cout<<endl<<"Division by zero is underdefined!! "<<endl;
             break;
         }
     }
@@ -312,7 +322,7 @@ void trignometry()
     while(cont1)
     {
         cout<<"Enter a value for performing the calculation";
-        cout<<endl<<"1.Trigonometric function 2.Inverse Trigonometric";
+        cout<<endl<<"1.Trigonometric function" <<endl<<"2.Inverse Trigonometric"<<endl;
         cin>>a;
         if(a==1)
         {
@@ -324,12 +334,12 @@ void trignometry()
         }
         else
         {
-            cout<<endl<<"Enter a valid number";
+            cout<<endl<<"Enter a valid number"<<endl;
             continue;
         }
         //Checking whether the use want to continue the program//
         tricheck:
-        cout<<"Enter (Y/N) for Trigonometric Operations(Both Trig and Inverse)"<<endl<<"Y for continue"<<endl<<"N for Exiting"<<endl;
+        cout<<"Enter (Y/N) for Trigonometric Operations(Both Trig and Inverse) "<<endl<<" Y for continue "<<endl<<" N for Exiting "<<endl;
         cin>>yesorno;
 
         if (yesorno == 'y' || yesorno == 'Y')
@@ -343,7 +353,7 @@ void trignometry()
         {
             {
                 cont1 = false;
-                cout << " Trigonometric Operations(Both Trig and Inverse) Completed Successfully" << endl;
+                cout << "Trigonometric Operations(Both Trig and Inverse) Completed Successfully" << endl;
             }
 
         }
@@ -358,47 +368,48 @@ void trignometry()
 
 void trig()
 {
-    cout<<endl<<"Welcome To trigonometric calculation"<<endl;
+    cout<<endl<<"Welcome To Trigonometric Calculation"<<endl;
     bool cont1=true;
-    int num;
+    const double pi=3.14159265358979323846;
     char yesorno;
     int switchvalue;
     while(cont1)
     {
-        cout << endl << "1.Sine 2.Cosine 3.Tangent 4.Cotangent 5.Secant 6.Cosecant"<<endl;
+        cout << endl << " 1.Sine "<<endl<<" 2.Cosine "<<endl<<" 3.Tangent "<<endl<<" 4.Cotangent "<<endl<<" 5.Secant "<<endl<<" 6.Cosecant"<<endl;
         cin >> switchvalue;
+
         if (switchvalue >= 1 && switchvalue <= 6)
         {
             switch (switchvalue)
             {
                 case 1:
                 {
-                    Sin();
+                    Sin(pi);
                     break;
                 }
                 case 2:
                 {
-                    Cos();
+                    Cos(pi);
                     break;
                 }
                 case 3:
                 {
-                    Tan();
+                    Tan(pi);
                     break;
                 }
                 case 4:
                 {
-                    Cot();
+                    Cot(pi);
                     break;
                 }
                 case 5:
                 {
-                    Sec();
+                    Sec(pi);
                     break;
                 }
                 case 6:
                 {
-                    Cosec();
+                    Cosec(pi);
                     break;
                 }
                 default:
@@ -411,12 +422,12 @@ void trig()
         else
         {
             cout << endl << "Enter a Valid number between 1 and 6"<<endl;
+            continue;
         }
 
         //Checking whether the use want to continue the program//
-
-        cout << "Enter (Y/N) for Trigonometric Operations" << endl << "Y for continue" << endl
-             << "N for Exiting" << endl;
+        trigcheck:
+        cout << "Enter (Y/N) for Trigonometric Operations" << endl << "Y for continue " << endl << "N for Exiting " << endl;
         cin >> yesorno;
 
         if (yesorno == 'y' || yesorno == 'Y') {
@@ -431,44 +442,192 @@ void trig()
 
         } else {
 
-            cout << "Wrong Output. Yes(Y) taken as default" << endl;
+            cout << "Wrong Output!!" << endl;
+            goto trigcheck;
         }
     }
 }
-void Sin()
-{
-    float a,b;
-    cout << endl<<"Enter the value";
-    cin>>b;
-    float c=sin(b);
-    cout<<"Value is"<<c;
-}
-void Cos()
-{
 
-}
-void Tan()
-{
+double raddegcheck(int &num){
+    const double pi=3.14159265358979323846;
+    double b,c;
+    double radian;
+    cout<<endl<<"Enter your Choice"<<endl<<"1 for Degree"<<endl<<"2 for Radian"<<endl;
+    cin>>num;
+    if(num==1){
+            cout<<"Enter the number in degree"<<endl;
+            cin>>c;
+            radian = (c*pi)/180;
+            return radian;
+    }
+    else if(num==2){
+            cout<<"Enter the number is radian"<<endl;
+            cin>>c;
+            return c;
+    }
+    else{
+        cout<<"Wrong Input!!"<<endl;
+    }
+    }
 
-}
-void Cot()
+void Sin(double pi)
 {
-
+    int num;
+    double b=raddegcheck(num);
+    if(num==1||num==2){
+    double c=sin(b);
+    cout<<"Value is "<<c<<endl;
+    }
 }
-void Sec()
+void Cos(double pi)
 {
-
+    int num;
+    double b=raddegcheck(num);
+    if(num==1||num==2){
+    double c=cos(b);
+    cout<<"Value is "<<c<<endl;
+    } 
 }
-void Cosec()
+void Tan(double pi)
 {
-
+    int num;
+    double b=raddegcheck(num);
+    if(num==1||num==2){
+    double c=sin(b)/cos(b);
+    cout<<"Value is "<<c<<endl;
+    }
 }
+void Cot(double pi)
+{
+     int num;
+    double b=raddegcheck(num);
+    if(num==1||num==2){
+    double c=cos(b)/sin(b);
+    cout<<"Value is "<<c<<endl;
+    }
+}
+void Sec(double pi)
+{
+     int num;
+    double b=raddegcheck(num);
+    if(num==1||num==2){
+    double c=1/cos(b);
+    cout<<"Value is "<<c<<endl;
+    }
+}
+void Cosec(double pi)
+{
+     int num;
+    double b=raddegcheck(num);
+    if(num==1||num==2){
+    double c=1/sin(b);
+    cout<<"Value is "<<c<<endl;
+    }
+}
+
 void inversetrig()
 {
-    cout<<endl<<"Welcome To Inverse Trigonometric calculation";
+    cout<<endl<<"Welcome To Inverse Trigonometric calculation"<<endl;
+    bool cont=true;
+    char yesorno;
+    int switchvalue;
+    
+    while(cont){
+
+        cout << endl << "1.ArcSine "<<endl<<"2.ArcCosine "<<endl<<"3.ArcTangent "<<endl<<"4.ArcCotangent "<<endl<<"5.ArcSecant "<<endl<<"6.ArcCosecant"<<endl;
+        cin >> switchvalue;
+
+        if(switchvalue>0&&switchvalue<=6){
+
+        switch(switchvalue){
+            case 1:
+                {
+                    ArcSin();
+                    break;
+                }
+                case 2:
+                {
+                    ArcCos();
+                    break;
+                }
+                case 3:
+                {
+                    ArcTan();
+                    break;
+                }
+                case 4:
+                {
+                    ArcCot();
+                    break;
+                }
+                case 5:
+                {
+                    ArcSec();
+                    break;
+                }
+                case 6:
+                {
+                    ArcCosec();
+                    break;
+                }
+                default:
+                {
+                    cout<<"This will never get printed!!!"<<endl;
+                    break;
+                }
+        }
+        }
+        else{
+            cout<<endl<<"Enter a valid number between 1 and 6"<<endl;
+        }
+
+        inversetrigcheck:
+        cout << "Enter (Y/N) for Inverse Trigonometric Operations" << endl << " Y for continue " << endl << " N for Exiting " << endl;
+        cin >> yesorno;
+
+        if (yesorno == 'y' || yesorno == 'Y') {
+            {
+                cont = true;
+            }
+        } else if (yesorno == 'n' || yesorno == 'N') {
+            {
+                cont = false;
+                cout << "Inverse Trigonometric Operation Completed Successfully" << endl;
+            }
+
+        } else {
+
+            cout << "Wrong Output. " << endl;
+            goto inversetrigcheck;
+        }
+    }
 
 }
 
+void ArcSin()
+{
+    
+}
+void ArcCos()
+{
+
+}
+void ArcTan()
+{
+
+}
+void ArcCot()
+{
+
+}
+void ArcSec()
+{
+
+}
+void ArcCosec()
+{
+
+}
 
 
 //Logarithmic Operations
