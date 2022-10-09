@@ -664,7 +664,7 @@ void logarithmic()
     cout<<"Enter the number whose log (base-10)value is to be found"<<endl;
     int n;
     cin>>n;
-    long long ans=log10(n);
+    double ans=log10(n);
     cout<<"Answer is "<<ans<<endl;
 }
 
