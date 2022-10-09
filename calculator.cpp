@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <vector>
+#include<algorithm>
 using namespace std;
 
 //Function Call for Each Calculation
@@ -654,10 +656,16 @@ void ArcCosec()
 }
 
 
+
+
 //Logarithmic Operations
 void logarithmic()
 {
-    cout<<"3";
+    cout<<"Enter the number whose log (base-10)value is to be found"<<endl;
+    int n;
+    cin>>n;
+    long long ans=log10(n);
+    cout<<"Answer is "<<ans<<endl;
 }
 
 
@@ -666,7 +674,14 @@ void logarithmic()
 //Exponential operation
 void exponential()
 {
-    cout<<"4";
+    cout<<"Enter the number whose exponential is to be found"<<endl;
+    int n;
+    cin>>n;
+    cout<<"Enter the power to find"<<endl;
+    int power;
+    cin>>power;
+    long long ans=pow(n,power);
+    cout<<"The value of "<<n<<"^"<<power<<" is "<<ans<<endl;
 }
 
 
@@ -675,5 +690,21 @@ void exponential()
 //relational operations
 void relational()
 {
-    cout<<"5";
+    cout<<"How many numbers you want to check"<<endl;
+    int n;
+    cin>>n;
+    vector<int> ans;
+    cout<<"Enter your numbers"<<endl;
+    for(int i=0;i<n;i++){
+        int t;
+        cin>>t;
+        ans.push_back(t);
+    }
+    sort(ans.begin(), ans.end());
+    cout<<"Array in sorted manner"<<endl;
+    for(int i=0;i<n;i++){
+        cout<<ans[i]<<" ";
+    }
+    cout<<endl<<"Largest Number in the array "<<ans[ans.size()-1]<<endl;
+    cout<<"Smallest Number in the array "<<ans[0]<<endl;
 }
